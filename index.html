@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Median Absolute Deviation (MAD) Calculation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+      crossorigin="anonymous"
+    />
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
+      integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Median Absolute Deviation (MAD)</h1>
+      <p class="introduction">
+        The Median Absolute Deviation (MAD) is a measure of statistical
+        dispersion. It is the median of the absolute deviations from the data's
+        median. This makes it a robust measure of the variability of a dataset.
+      </p>
+      <p>Input: 3, 6, 7, 8, 8, 10, 15, 16, 20</p>
+      <details>
+        <summary>Step 1: Calculate the Median of the Dataset</summary>
+        <div class="content">
+          <ul>
+            <li>
+              Organize the data from smallest to largest and find the central
+              value.
+            </li>
+            <li>Sorted data: (3, 6, 7, 8, 8, 10, 15, 16, 20)</li>
+            <li>
+              Determine the number of observations in your dataset. This count
+              (let's call it N) is important to figure out whether you have an
+              odd or even number of data points. \[N=9\]
+            </li>
+            <li>
+              For an Odd Number of Data Points (N is odd): The median is the
+              value exactly in the middle of the ordered list. \[\frac{N +
+              1}{2}\]
+            </li>
+            <li>
+              For an Even Number of Data Points (N is even): The median is the
+              average of the two middle values. To find these values, use the
+              positions \[\frac{N}{2}\ , \frac{N}{2} + 1\]
+            </li>
+          </ul>
+          <p>Here the number of observations are odd. Hence the median is 8.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Step 2: Compute Absolute Deviations from the Median</summary>
+        <div class="content">
+          <p>
+            Determine the absolute differences between the median and each data
+            point.
+          </p>
+          <ul>
+            <li>
+              Go through each data point in your dataset. For a data point x,
+              calculate its absolute deviation from the median M using the
+              formula:
+            </li>
+            <li>
+              Absolute Deviation: \[|x - M|\] here vertical bars |...| denote
+              the absolute value, ensuring the result is non-negative.
+            </li>
+          </ul>
+          <div class="math">
+            \[ \begin{aligned} |3 - 8| &= 5, & |6 - 8| &= 2, & |7 - 8| &= 1,
+            \\|8 - 8| &= 0, & |8 - 8| &= 0, & |10 - 8| &= 2, \\ |15 - 8| &= 7,
+            &|16 - 8| &= 8, & |20 - 8| &= 12 \end{aligned} \]
+          </div>
+          <ul>
+            <li>The new data set is (5, 2, 1, 0, 0, 2, 7, 8, 12)</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          Step 3: Calculate the Median of the Absolute Deviations
+        </summary>
+        <div class="content">
+          <p>
+            Organize the absolute deviations and find their median. This is the
+            MAD.
+          </p>
+          <ul>
+            <li>
+              Sort the Absolute Deviations:
+              <br />
+              Ordered list: (0, 0, 1, 2, 2, 5, 7, 8, 12)
+            </li>
+            <li>
+              As calculated the median find the median for this new dataset
+            </li>
+            <li>
+              The MAD is the middle value of the ordered list of absolute
+              deviations (5th value) \[(9 + 1) / 2 = 5\].
+            </li>
+            <li>The 5th value in the ordered list is 2.</li>
+          </ul>
+        </div>
+      </details>
+      <div class="content-answer">
+        <h3>Answer:</h3>
+        <div class="highlighted-answer">
+          <p>
+            The Median Absolute Deviation (MAD) of the dataset is
+            <strong>2</strong>.
+          </p>
+          <p>
+            This indicates that the typical deviation from the median of the
+            dataset is 2 units.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
